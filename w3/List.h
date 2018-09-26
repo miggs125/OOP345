@@ -1,3 +1,12 @@
+// Name: MIGUEL RONCANCIO
+// Seneca Student ID: 151091170
+// Seneca email: mroncancio@myseneca.ca
+// Date of completion: September 26 2018
+//
+// I confirm that the content of this file is created by me,
+// with the exception of the parts provided to me by my professor.
+
+
 
 #ifndef LIST_H
 #define LIST_H
@@ -9,6 +18,7 @@ class List {
     
     T m_array[N]; // array of type T, size N
     size_t count;
+    T dummy;
 
     public:
 
@@ -24,8 +34,8 @@ class List {
     {
         if(index >= 0 && index < count)
             return m_array[index];
-        /*else
-            std::cout << "Index specified is outside of array" << std::endl;*/
+	    else
+	        return dummy;
     };
     
      

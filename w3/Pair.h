@@ -1,11 +1,10 @@
-/*
-Design and code a class template named Pair for managing a key-value pair off template data types A and B.
-
-Your design includes the following member functions:
-• Pair() — default constructor adopts a safe empty state
-• Pair(const A&, const B&) — overloaded constructor that sets the key-value pair elements of the class
-• const A& getKey() const — returns a read-only version of the stored key information
-• const B& getValue() const — returns a read-only version of the stored value information*/
+// Name: MIGUEL RONCANCIO
+// Seneca Student ID: 151091170
+// Seneca email: mroncancio@myseneca.ca
+// Date of completion: September 26 2018
+//
+// I confirm that the content of this file is created by me,
+// with the exception of the parts provided to me by my professor.
 
 #ifndef PAIR_H
 #define PAIR_H
