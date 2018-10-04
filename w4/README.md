@@ -1,6 +1,6 @@
 <h1>Workshop 4 - Composition </h1>
 
-<p> This workshop demonstrate the usage and of composition by having the
+<p> This workshop demonstrates the usage and of composition by having the
     Notifications class possess ownership of the messages class.
     All files with the exception of w4.cpp were written by me.</p>
 
