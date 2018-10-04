@@ -9,7 +9,7 @@ namespace w4 {
     {
         for(int i = 0; i < 10; i++){
             if(msg_P[i] != nullptr){
-                delete [] msg_P[i];
+                delete msg_P[i];
                 msg_P[i] = nullptr;
             } 
         }
@@ -27,7 +27,7 @@ namespace w4 {
         //move resources and member variables
         for(int i = 0; i < 10; i++){
             msg_P[i] = other.msg_P[i];
-            delete [] other.msg_P[i];
+            delete other.msg_P[i];
             other.msg_P[i] = nullptr;
         }
     }
@@ -42,7 +42,7 @@ namespace w4 {
 
             for(int i = 0; i < 10; i++){
                 if(msg_P[i] != nullptr)
-                    delete [] msg_P[i]; // free memory
+                    delete msg_P[i]; // free memory
                 msg_P[i] = other.msg_P[i];  // copy over data 
             }
         }
@@ -58,7 +58,7 @@ namespace w4 {
             // free exisiting resource
             for(int i = 0; i < 10; i++){
                 if(msg_P[i] != nullptr)
-                    delete [] msg_P[i]; // free current memory
+                    delete msg_P[i]; // free current memory
                 msg_P[i] = other.msg_P[i];  // transfer resources from other
                 other.msg_P[i] = nullptr;   // release memory 
             }
@@ -71,14 +71,15 @@ namespace w4 {
 
         if(m_size < 10){
             msg_P[m_size++] = new Message(msg); 
-           // msg_P[m_size++] = const_cast<Message*>(&msg);
         }
     }
 
     //************** MEMBER FUNCTIONS ********************************
     void Notifications::display(std::ostream& os) const // inserts message objects to the os output stream
     {
-        /*for(size_t i = 0; i < m_numMessages; ++i)
-            messages[i].display(os);*/
+        for(size_t i = 0; i < m_size; ++i){
+            msg_P[i]->display(os);      // arrow operator used because msg_P[i] is a pointer. need to dereference.
+            os << std::endl;
+        }
     }
 }
