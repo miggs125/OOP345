@@ -26,14 +26,7 @@ namespace w4 {
     // copy constructor
     Notifications::Notifications(const Notifications& other){ *this = other; }
 
-    Notifications::Notifications(Notifications&& other) // move constructor
-    {
-        for(int i = 0; i < 10; i++){ //move resources and member variables
-            msg_P[i] = other.msg_P[i]; // move
-            delete other.msg_P[i];  // release memory 
-            other.msg_P[i] = nullptr;
-        }
-    }
+    Notifications::Notifications(Notifications&& other) { *this = std::move(other); }
 
     //************** OVERLOADED OPERATORS ****************************
 
@@ -41,12 +34,15 @@ namespace w4 {
     {
         //check for self assignment
         if(this != &other){
-            m_size = other.m_size; // shallow copy of data members
+            
 
-            for(int i = 0; i < 10; i++){
+            for(int i = 0; i < m_size; ++i){
                 if(msg_P[i] != nullptr)
                     delete msg_P[i]; // free memory
-                msg_P[i] = other.msg_P[i];  // copy over data 
+            }
+            m_size = 0; // shallow copy of data members
+            for(int i = 0; i < other.m_size; i++){
+                *this += *other.msg_P[i];   // copy data
             }
         }
         return *this;
@@ -56,13 +52,8 @@ namespace w4 {
     {
         // check for self assignment
         if(this != &other){
-            m_size = other.m_size; // move instance variables
-            for(int i = 0; i < 10; i++){ // free exisiting resource
-                if(msg_P[i] != nullptr)
-                    delete msg_P[i]; // free current memory
-                msg_P[i] = other.msg_P[i];  // transfer resources from other
-                other.msg_P[i] = nullptr;   // release memory 
-            }
+            for(int i = 0; i < 10; i++) //move resources and member variables
+                *this+= *other.msg_P[i]; 
         }
         return *this;
     }
