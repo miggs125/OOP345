@@ -1,7 +1,22 @@
 #include <iostream> 
 
+
+
 enum class Letter // enumeration example
     { A, B, C };
+
+template<typename Z>
+const char* convert(const Z &letter){   
+    switch(letter){
+        case Letter::A:
+            return "A";
+        case Letter::B:
+            return "B";
+        case Letter::C:
+            return "C";
+    }
+    return "dummy";
+}
 
 template <typename T, int G = 0> // template syntax
 class List {
@@ -21,13 +36,8 @@ class List {
 
     // copy assignment operator
     List& operator=(const List& other){
-
+        
     }
-
-  
-
-
-
 
 
     // move assignment operator 
