@@ -12,7 +12,6 @@
 
 //internal linkage, global variables
 int STORED = 3; //specifies the number of characters stored by the object
-static int insertion = 0; // specifies the number of inset
 namespace w1{
 
     CString::CString() : MAX(0){ // default constructor sets object to safe empty state
@@ -21,6 +20,7 @@ namespace w1{
 
 
     CString::CString(const char* string) : MAX(STORED) { // constructor
+        
         if(string != nullptr){ // check for null address of string
             strncpy(m_string, string, MAX); // copy string into m_string if not null
             m_string[MAX] = '\0';
@@ -34,6 +34,7 @@ namespace w1{
     }
 
     std::ostream& operator<<(std::ostream& os, const CString& current){
+        static int insertion = 0; // specifies the number of inset
         os << insertion++ << ": ";
         current.display(os);
         return os;
