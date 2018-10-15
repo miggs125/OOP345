@@ -5,7 +5,7 @@
 enum class Letter // enumeration example
     { A, B, C };
 
-template<typename Z>
+template<typename Z> // template syntax
 const char* convert(const Z &letter){   
     switch(letter){
         case Letter::A:
@@ -16,28 +16,27 @@ const char* convert(const Z &letter){
             return "C";
     }
     return "dummy";
-}
+};
 
-template <typename T, int G = 0> // template syntax
 class List {
     public:
-    T m_array*;
+    
+    double *m_array;
     size_t arr_size;
-    T dummy;
 
     // custom constructor
-    List() : arr_size{G}, m_array{nullptr} { }
+    List() : arr_size{0} , m_array{nullptr} {};
 
     //copy constructor
-    List& List(const List& other){ *this = other; }
+    List(const List& other){ *this = other; };
 
     // move constructor
-    List& List(List&& other){ *this = std::move(other); }
+    List(List&& other){ *this = std::move(other); };
 
     // copy assignment operator
     List& operator=(const List& other){
         
-    }
+    };
 
 
     // move assignment operator 
